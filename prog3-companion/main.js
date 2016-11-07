@@ -54,6 +54,13 @@ var benefulBar = new Content({   	top: 460, height: 21, left: 10, width: 190,  
 
 var beyondBar = new Content({   	top: 460, height: 21, left: 170, width: 190,    skin: fullBarSkin});
 
+var ar2 = new Skin({   	width: 41, height: 31,    texture: new Texture("assets/ar3.png"),    aspect: "fit"});
+
+var live = new Skin({   	width: 45, height: 30,    texture: new Texture("assets/live.png"),    aspect: "fit"});
+
+var rectangle = new Skin({   	width: 376, height: 34,    texture: new Texture("assets/rectangle.png"),    aspect: "fit"});
+
+
 let backgroundSkin = new Skin({ fill : ["#FFFFFF", "#7DBF2E"] });let textStyleGreeting = new Style({ font: "bold 35px Roboto", color: "black" });
 let textStyleNews = new Style({ font: "25px Roboto", color: "black" });
 let textStyleHeading = new Style({ font: "bold 25px Roboto", color: "black" });
@@ -67,193 +74,25 @@ let textStyleFoodBold = new Style({ font: "bold 20px Roboto", color: "black" });
 
 let textStyleEdit = new Style({ font: "18px Roboto", color: "#FF2D55" });
 
-let FoodContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
-    	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleGreeting, string: "Food" }),
-        
-		new Content({   			width: 350, top: 100, right: 0,    		skin: lineSkin, 		}),
-		
-		
-		new Content({   			width: 350, top: 300, right: 0,    		skin: lineSkin, 		}),
-		    	new Content({   			width: 350, top: 500, right: 0,    		skin: lineSkin, 		}),    	
-		new Content({   			top: 101, height: 400, left:0, right: 0,    		skin: verticalLineSkin, 		}),
-		
-		Label($, {top: 160, left: 70, style: textStyleFood, string: "Water" }),    	
-		Label($, {top: 235, left: 10, style: textStyleFoodBold, string: "Quantity" }),    	
-    	new Content({   			top: 130, height: 100, left: 0,    		skin: bottleSkin, 		}),
-		
-		    	new Content({   			top: 260, height: 21, left: 10,    		skin: emptyBarSkin, 		}),
-		
-		
-		waterBar,    	
-		Label($, {top: 160, left: 230, style: textStyleFood, string: "Bavaro" }),    	    	Label($, {top: 235, left: 170, style: textStyleFoodBold, string: "Quantity" }),
-    	new Content({   			top: 130, height: 100, left: 160,    		skin: bavaroSkin, 		}),
-		    	new Content({   			top: 260, height: 21, left: 170,    		skin: emptyBarSkin, 		}),
-		
-		bavaroBar,
-		    	Label($, {top: 360, left: 230, style: textStyleFood, string: "Beyond" }),    	    	Label($, {top: 435, left: 170, style: textStyleFoodBold, string: "Quantity" }),
-    	new Content({   			top: 330, height: 100, left: 160,    		skin: beyondSkin, 		}),
-		    	new Content({   			top: 460, height: 21, left: 170,    		skin: emptyBarSkin, 		}),
-		beyondBar,
-		
-		
-		Label($, {top: 360, left: 70, style: textStyleFood, string: "Beneful" }),    	    	Label($, {top: 435, left: 10, style: textStyleFoodBold, string: "Quantity" }),
-    	new Content({   			top: 330, height: 100, left: 0,    		skin: benefulSkin, 		}),
-		    	new Content({   			top: 460, height: 21, left: 10,    		skin: emptyBarSkin, 		}),
-		benefulBar,    	
-		
-		    	
-		new Content({   			bottom: 0, left:0, height:45,     		skin: menuSkin		}),		new Content({   			bottom: 0, left:0, height:44,     		skin: menuBarDashboardSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {	    			application.remove(currentScreen);  	            	currentScreen = new dashboardContainer();	            	application.add(currentScreen);
-	            	waterBar = new Content({ 					  	top: 260, height: 21, left: 10, width: 190, 					    skin: fullBarSkin					});										bavaroBar = new Content({ 					  	top: 260, height: 21, left: 170, width: 190,  					    skin: fullBarSkin					});										benefulBar = new Content({ 					  	top: 460, height: 21, left: 10, width: 190,  					    skin: fullBarSkin					});										beyondBar = new Content({ 					  	top: 460, height: 21, left: 170, width: 190,					    skin: fullBarSkin					});	    		}		    	})		}),		new Content({   			bottom: 0, left:80, height:44,    		skin: menuBarMyPetSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {	    			application.remove(currentScreen);  	            	currentScreen = new myPetContainer();	            	application.add(currentScreen);
-	            	waterBar = new Content({ 					  	top: 260, height: 21, left: 10, width: 190, 					    skin: fullBarSkin					});										bavaroBar = new Content({ 					  	top: 260, height: 21, left: 170, width: 190,  					    skin: fullBarSkin					});										benefulBar = new Content({ 					  	top: 460, height: 21, left: 10, width: 190,  					    skin: fullBarSkin					});										beyondBar = new Content({ 					  	top: 460, height: 21, left: 170, width: 190,					    skin: fullBarSkin					});	    		}		    	})		}),		new Content({   			bottom: 0, left:160, height:44,    		skin: menuBarFoodSkin, 						behavior: Behavior({	    		onTouchEnded: function(container) {	    			application.remove(currentScreen);  	            	currentScreen = new FoodContainer();	            	application.add(currentScreen);
-	            	waterBar = new Content({ 					  	top: 260, height: 21, left: 10, width: 190, 					    skin: fullBarSkin					});										bavaroBar = new Content({ 					  	top: 260, height: 21, left: 170, width: 190,  					    skin: fullBarSkin					});										benefulBar = new Content({ 					  	top: 460, height: 21, left: 10, width: 190,  					    skin: fullBarSkin					});										beyondBar = new Content({ 					  	top: 460, height: 21, left: 170, width: 190,					    skin: fullBarSkin					});	    		}		    	})		}),				new Content({   			bottom: 0, left:240, height:44,    		skin: menuBarPetFeederSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {	    			application.remove(currentScreen);  	            	currentScreen = new petFeederContainer();	            	application.add(currentScreen);
-	            	waterBar = new Content({ 					  	top: 260, height: 21, left: 10, width: 190, 					    skin: fullBarSkin					});										bavaroBar = new Content({ 					  	top: 260, height: 21, left: 170, width: 190,  					    skin: fullBarSkin					});										benefulBar = new Content({ 					  	top: 460, height: 21, left: 10, width: 190,  					    skin: fullBarSkin					});										beyondBar = new Content({ 					  	top: 460, height: 21, left: 170, width: 190,					    skin: fullBarSkin					});	    		}		    	})		}),    	    
-		    ]}));
 
-let petFeederContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
-    	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleGreeting, string: "Pet Feeder" }),
-        
-        Label($, {top: 120, left: 20, style: textStyletoggle, string: "Device Name" }),
-        Label($, {top: 120, right: 20, style: textStyleInfo, string: "PL12" }),
-        
-		new Content({   			width: 300, top: 158, right: 0,    		skin: lineSkin, 		}),
-		
-		Label($, {top: 170, left: 20, style: textStyletoggle, string: "Supplier" }),
-		
-		Label($, {top: 170, right: 20, style: textStyleInfo, string: "PetCo" }),
-		new Content({   			width: 300, top: 208, right: 0,    		skin: lineSkin, 		}),
-		
-		
-		Label($, {top: 260, left: 20, style: textStyletoggle, string: "Software Version" }),
-        Label($, {top: 260, right: 20, style: textStyleInfo, string: "1.0" }),
-        
-		new Content({   			width: 300, top: 298, right: 0,    		skin: lineSkin, 		}),
-		
-		Label($, {top: 310, left: 20, style: textStyletoggle, string: "Serial Number" }),
-		
-		Label($, {top: 310, right: 20, style: textStyleInfo, string: "FH234" }),
-		new Content({   			width: 300, top: 348, right: 0,    		skin: lineSkin, 		}),
-		    	new Content({   			bottom: 0, left:0, height:45,     		skin: menuSkin		}),
-		new Content({   			bottom: 0, left:0, height:44,     		skin: menuBarDashboardSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new dashboardContainer();	            	application.add(currentScreen);	    		}		    	})		}),
-		new Content({   			bottom: 0, left:80, height:44,    		skin: menuBarMyPetSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new myPetContainer();	            	application.add(currentScreen);	    		}		    	})		}),
-		new Content({   			bottom: 0, left:160, height:44,    		skin: menuBarFoodSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new FoodContainer();	            	application.add(currentScreen);	    		}		    	})		}),
-		
-		new Content({   			bottom: 0, left:240, height:44,    		skin: menuBarPetFeederSkin, 						behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new petFeederContainer();	            	application.add(currentScreen);	    		}		    	})		}),
-		    ]}));
+let textStyleAR = new Style({ font: "10px Roboto", color: "black" });
+let textStyleLabel2 = new Style({ font: "bold 12px Roboto", color: "#808080" });
 
-var weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
-
-var sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
-
-var ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });
-
-let myPetContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
-    	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleGreeting, string: "My Pet" }),
-        //Label($, {top: 40, right: 20, style: textStyleEdit, string: "Edit Name" }),
+let dashboardContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
+    	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleWelcome, string: "Welcome back Gauthier," }),
+        Label($, {top: 60, left: 20, style: textStyleSick, string: "Bubble still seems to be sick." }),
+        
+        new Content({   			width: 41, height: 30, top: 30, right: 81,    		skin: ar2, 		}),
+		
+		new Content({   			width: 45, height: 30, top: 31, right: 20,    		skin: live, 		}),
+		
+		Label($, {top: 65, right: 97, style: textStyleAR, string: "AR" }),
+        Label($, {top: 65, right: 29, style: textStyleAR, string: "Live Cam" }),
+		
+        new Content({   			width: 376, height: 34, top: 100, right: 0,    		skin: rectangle, 		}),
+		Label($, {top: 115, left: 10, style: textStyleLabel2, string: "FISH TANK STATISTICS" }),
         
         
-        new Content({   			width: 30, top: 70, left: 20,    		skin: dogSkin, 		}),
-        Label($, {top: 85, left: 65, style: textStyletoggle, string: "Dog" }),
-        
-        
-        
-        
-        Label($, {top: 150, left: 20, style: textStyletoggle, string: "Weight" }),
-        
-		new Content({   			width: 300, top: 188, right: 0,    		skin: lineSkin, 		}),
-		weightLabel,
-		
-		Label($, {top: 200, left: 20, style: textStyletoggle, string: "Size" }),
-		
-		sizeLabel,
-		
-		new Content({   			width: 300, top: 238, right: 0,    		skin: lineSkin, 		}),
-		
-		Label($, {top: 250, left: 20, style: textStyletoggle, string: "Age" }),
-		
-		ageLabel,
-		
-		new Content({   			width: 300, top: 288, right: 0,    		skin: lineSkin, 		}),
-		
-		new Content({   			bottom: 0, left:0, height:45,     		skin: menuSkin		}),
-		new Content({   			bottom: 0, left:0, height:44,     		skin: menuBarDashboardSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new dashboardContainer();	            	application.add(currentScreen);
-	            	weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
-					sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
-					ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });	    		}		    	})		}),
-		new Content({   			bottom: 0, left:80, height:44,    		skin: menuBarMyPetSkin, 						behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new myPetContainer();	            	application.add(currentScreen);
-	            	weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
-					sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
-					ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });	    		}		    	})		}),
-		new Content({   			bottom: 0, left:160, height:44,    		skin: menuBarFoodSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new FoodContainer();	            	application.add(currentScreen);
-	            	weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
-					sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
-					ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });	    		}		    	})		}),
-		
-		new Content({   			bottom: 0, left:240, height:44,    		skin: menuBarPetFeederSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new petFeederContainer();	            	application.add(currentScreen);
-	            	weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
-					sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
-					ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });	    		}		    	})		}),    ]}));
-
-var sickLabel = new Label({top: 70, left: 20, style: textStyleNews, string: "Pet is Sick" });
-
-var heaterToggle = new Content({   			width: 70, top: 140, right: 10,    		skin: toggleOffSkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == toggleOnSkin){
-    					container.skin = toggleOffSkin;
-    					application.distribute("onToggleLight", 0);
-    				}
-    				else{
-    					container.skin = toggleOnSkin;
-    					application.distribute("onToggleLight", 1);
-    				}
-    				
-    			}	
-    		}) 		});
-
-var fanToggle = new Content({   			width: 70, top: 190, right: 10,    		skin: toggleOffSkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == toggleOnSkin){
-    					container.skin = toggleOffSkin;
-    					application.distribute("onToggleLight2", 0);
-    				}
-    				else{
-    					container.skin = toggleOnSkin;
-    					application.distribute("onToggleLight2", 1);
-    				}
-    				
-    			}	
-    		}) 		});
-
-var musicToggle = new Content({   			width: 320, top: 445, right: 0,    		skin: musicPlaySkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == musicPauseSkin){
-    					container.skin = musicPlaySkin;
-    					application.distribute("onToggleLight3", 0);
-    				}
-    				else{
-    					container.skin = musicPauseSkin;
-    					application.distribute("onToggleLight3", 1);
-    				}
-    				
-    			}	
-    		})		});
-let dashboardContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
-    	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleGreeting, string: "Hello Gauthier," }),
-        sickLabel,
-        Label($, {top: 120, left: 20, style: textStyleHeading, string: "Temperature Adjustment" }),
         Label($, {top: 170, left: 20, style: textStyletoggle, string: "Heater" }),
         heaterToggle,
 		new Content({   			width: 300, top: 208, right: 0,    		skin: lineSkin, 		}),
@@ -457,6 +296,197 @@ var musicToggle = new Content({   			width: 320, top: 445, right: 0,    		skin
     		}) 		});
 	            	
 	            	heaterToggle = new Content({   			width: 70, top: 140, right: 10,    		skin: toggleOffSkin,    		active: true,    		behavior: Behavior({    			onTouchEnded: function(container) {    				if (container.skin == toggleOnSkin){    					container.skin = toggleOffSkin;    					application.distribute("onToggleLight", 0);    				}    				else{    					container.skin = toggleOnSkin;    					application.distribute("onToggleLight", 1);    				}    				    			}	    		}) 		});	    		}		    	})		}),    ]}));
+
+
+
+
+let FoodContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
+    	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleGreeting, string: "Food" }),
+        
+		new Content({   			width: 350, top: 100, right: 0,    		skin: lineSkin, 		}),
+		
+		
+		new Content({   			width: 350, top: 300, right: 0,    		skin: lineSkin, 		}),
+		    	new Content({   			width: 350, top: 500, right: 0,    		skin: lineSkin, 		}),    	
+		new Content({   			top: 101, height: 400, left:0, right: 0,    		skin: verticalLineSkin, 		}),
+		
+		Label($, {top: 160, left: 70, style: textStyleFood, string: "Water" }),    	
+		Label($, {top: 235, left: 10, style: textStyleFoodBold, string: "Quantity" }),    	
+    	new Content({   			top: 130, height: 100, left: 0,    		skin: bottleSkin, 		}),
+		
+		    	new Content({   			top: 260, height: 21, left: 10,    		skin: emptyBarSkin, 		}),
+		
+		
+		waterBar,    	
+		Label($, {top: 160, left: 230, style: textStyleFood, string: "Bavaro" }),    	    	Label($, {top: 235, left: 170, style: textStyleFoodBold, string: "Quantity" }),
+    	new Content({   			top: 130, height: 100, left: 160,    		skin: bavaroSkin, 		}),
+		    	new Content({   			top: 260, height: 21, left: 170,    		skin: emptyBarSkin, 		}),
+		
+		bavaroBar,
+		    	Label($, {top: 360, left: 230, style: textStyleFood, string: "Beyond" }),    	    	Label($, {top: 435, left: 170, style: textStyleFoodBold, string: "Quantity" }),
+    	new Content({   			top: 330, height: 100, left: 160,    		skin: beyondSkin, 		}),
+		    	new Content({   			top: 460, height: 21, left: 170,    		skin: emptyBarSkin, 		}),
+		beyondBar,
+		
+		
+		Label($, {top: 360, left: 70, style: textStyleFood, string: "Beneful" }),    	    	Label($, {top: 435, left: 10, style: textStyleFoodBold, string: "Quantity" }),
+    	new Content({   			top: 330, height: 100, left: 0,    		skin: benefulSkin, 		}),
+		    	new Content({   			top: 460, height: 21, left: 10,    		skin: emptyBarSkin, 		}),
+		benefulBar,    	
+		
+		    	
+		new Content({   			bottom: 0, left:0, height:45,     		skin: menuSkin		}),		new Content({   			bottom: 0, left:0, height:44,     		skin: menuBarDashboardSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {	    			application.remove(currentScreen);  	            	currentScreen = new dashboardContainer();	            	application.add(currentScreen);
+	            	waterBar = new Content({ 					  	top: 260, height: 21, left: 10, width: 190, 					    skin: fullBarSkin					});										bavaroBar = new Content({ 					  	top: 260, height: 21, left: 170, width: 190,  					    skin: fullBarSkin					});										benefulBar = new Content({ 					  	top: 460, height: 21, left: 10, width: 190,  					    skin: fullBarSkin					});										beyondBar = new Content({ 					  	top: 460, height: 21, left: 170, width: 190,					    skin: fullBarSkin					});	    		}		    	})		}),		new Content({   			bottom: 0, left:80, height:44,    		skin: menuBarMyPetSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {	    			application.remove(currentScreen);  	            	currentScreen = new myPetContainer();	            	application.add(currentScreen);
+	            	waterBar = new Content({ 					  	top: 260, height: 21, left: 10, width: 190, 					    skin: fullBarSkin					});										bavaroBar = new Content({ 					  	top: 260, height: 21, left: 170, width: 190,  					    skin: fullBarSkin					});										benefulBar = new Content({ 					  	top: 460, height: 21, left: 10, width: 190,  					    skin: fullBarSkin					});										beyondBar = new Content({ 					  	top: 460, height: 21, left: 170, width: 190,					    skin: fullBarSkin					});	    		}		    	})		}),		new Content({   			bottom: 0, left:160, height:44,    		skin: menuBarFoodSkin, 						behavior: Behavior({	    		onTouchEnded: function(container) {	    			application.remove(currentScreen);  	            	currentScreen = new FoodContainer();	            	application.add(currentScreen);
+	            	waterBar = new Content({ 					  	top: 260, height: 21, left: 10, width: 190, 					    skin: fullBarSkin					});										bavaroBar = new Content({ 					  	top: 260, height: 21, left: 170, width: 190,  					    skin: fullBarSkin					});										benefulBar = new Content({ 					  	top: 460, height: 21, left: 10, width: 190,  					    skin: fullBarSkin					});										beyondBar = new Content({ 					  	top: 460, height: 21, left: 170, width: 190,					    skin: fullBarSkin					});	    		}		    	})		}),				new Content({   			bottom: 0, left:240, height:44,    		skin: menuBarPetFeederSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {	    			application.remove(currentScreen);  	            	currentScreen = new petFeederContainer();	            	application.add(currentScreen);
+	            	waterBar = new Content({ 					  	top: 260, height: 21, left: 10, width: 190, 					    skin: fullBarSkin					});										bavaroBar = new Content({ 					  	top: 260, height: 21, left: 170, width: 190,  					    skin: fullBarSkin					});										benefulBar = new Content({ 					  	top: 460, height: 21, left: 10, width: 190,  					    skin: fullBarSkin					});										beyondBar = new Content({ 					  	top: 460, height: 21, left: 170, width: 190,					    skin: fullBarSkin					});	    		}		    	})		}),    	    
+		    ]}));
+
+let petFeederContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
+    	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleGreeting, string: "Pet Feeder" }),
+        
+        Label($, {top: 120, left: 20, style: textStyletoggle, string: "Device Name" }),
+        Label($, {top: 120, right: 20, style: textStyleInfo, string: "PL12" }),
+        
+		new Content({   			width: 300, top: 158, right: 0,    		skin: lineSkin, 		}),
+		
+		Label($, {top: 170, left: 20, style: textStyletoggle, string: "Supplier" }),
+		
+		Label($, {top: 170, right: 20, style: textStyleInfo, string: "PetCo" }),
+		new Content({   			width: 300, top: 208, right: 0,    		skin: lineSkin, 		}),
+		
+		
+		Label($, {top: 260, left: 20, style: textStyletoggle, string: "Software Version" }),
+        Label($, {top: 260, right: 20, style: textStyleInfo, string: "1.0" }),
+        
+		new Content({   			width: 300, top: 298, right: 0,    		skin: lineSkin, 		}),
+		
+		Label($, {top: 310, left: 20, style: textStyletoggle, string: "Serial Number" }),
+		
+		Label($, {top: 310, right: 20, style: textStyleInfo, string: "FH234" }),
+		new Content({   			width: 300, top: 348, right: 0,    		skin: lineSkin, 		}),
+		    	new Content({   			bottom: 0, left:0, height:45,     		skin: menuSkin		}),
+		new Content({   			bottom: 0, left:0, height:44,     		skin: menuBarDashboardSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
+	    			application.remove(currentScreen);  	            	currentScreen = new dashboardContainer();	            	application.add(currentScreen);	    		}		    	})		}),
+		new Content({   			bottom: 0, left:80, height:44,    		skin: menuBarMyPetSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
+	    			application.remove(currentScreen);  	            	currentScreen = new myPetContainer();	            	application.add(currentScreen);	    		}		    	})		}),
+		new Content({   			bottom: 0, left:160, height:44,    		skin: menuBarFoodSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
+	    			application.remove(currentScreen);  	            	currentScreen = new FoodContainer();	            	application.add(currentScreen);	    		}		    	})		}),
+		
+		new Content({   			bottom: 0, left:240, height:44,    		skin: menuBarPetFeederSkin, 						behavior: Behavior({	    		onTouchEnded: function(container) {
+	    			application.remove(currentScreen);  	            	currentScreen = new petFeederContainer();	            	application.add(currentScreen);	    		}		    	})		}),
+		    ]}));
+
+var weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
+
+var sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
+
+var ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });
+
+let myPetContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
+    	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleGreeting, string: "My Pet" }),
+        //Label($, {top: 40, right: 20, style: textStyleEdit, string: "Edit Name" }),
+        
+        
+        new Content({   			width: 30, top: 70, left: 20,    		skin: dogSkin, 		}),
+        Label($, {top: 85, left: 65, style: textStyletoggle, string: "Dog" }),
+        
+        
+        
+        
+        Label($, {top: 150, left: 20, style: textStyletoggle, string: "Weight" }),
+        
+		new Content({   			width: 300, top: 188, right: 0,    		skin: lineSkin, 		}),
+		weightLabel,
+		
+		Label($, {top: 200, left: 20, style: textStyletoggle, string: "Size" }),
+		
+		sizeLabel,
+		
+		new Content({   			width: 300, top: 238, right: 0,    		skin: lineSkin, 		}),
+		
+		Label($, {top: 250, left: 20, style: textStyletoggle, string: "Age" }),
+		
+		ageLabel,
+		
+		new Content({   			width: 300, top: 288, right: 0,    		skin: lineSkin, 		}),
+		
+		new Content({   			bottom: 0, left:0, height:45,     		skin: menuSkin		}),
+		new Content({   			bottom: 0, left:0, height:44,     		skin: menuBarDashboardSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
+	    			application.remove(currentScreen);  	            	currentScreen = new dashboardContainer();	            	application.add(currentScreen);
+	            	weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
+					sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
+					ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });	    		}		    	})		}),
+		new Content({   			bottom: 0, left:80, height:44,    		skin: menuBarMyPetSkin, 						behavior: Behavior({	    		onTouchEnded: function(container) {
+	    			application.remove(currentScreen);  	            	currentScreen = new myPetContainer();	            	application.add(currentScreen);
+	            	weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
+					sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
+					ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });	    		}		    	})		}),
+		new Content({   			bottom: 0, left:160, height:44,    		skin: menuBarFoodSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
+	    			application.remove(currentScreen);  	            	currentScreen = new FoodContainer();	            	application.add(currentScreen);
+	            	weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
+					sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
+					ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });	    		}		    	})		}),
+		
+		new Content({   			bottom: 0, left:240, height:44,    		skin: menuBarPetFeederSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
+	    			application.remove(currentScreen);  	            	currentScreen = new petFeederContainer();	            	application.add(currentScreen);
+	            	weightLabel = new Label({top: 140, right: 20, style: textStyleReading, string: "20kg" });
+					sizeLabel = new Label({top: 190, right: 20, style: textStyleReading, string: "60cm" });
+					ageLabel = new Label({top: 240, right: 20, style: textStyleReading, string: "6 years" });	    		}		    	})		}),    ]}));
+
+var sickLabel = new Label({top: 70, left: 20, style: textStyleNews, string: "Pet is Sick" });
+
+var heaterToggle = new Content({   			width: 70, top: 140, right: 10,    		skin: toggleOffSkin,
+    		active: true,
+    		behavior: Behavior({
+    			onTouchEnded: function(container) {
+    				if (container.skin == toggleOnSkin){
+    					container.skin = toggleOffSkin;
+    					application.distribute("onToggleLight", 0);
+    				}
+    				else{
+    					container.skin = toggleOnSkin;
+    					application.distribute("onToggleLight", 1);
+    				}
+    				
+    			}	
+    		}) 		});
+
+var fanToggle = new Content({   			width: 70, top: 190, right: 10,    		skin: toggleOffSkin,
+    		active: true,
+    		behavior: Behavior({
+    			onTouchEnded: function(container) {
+    				if (container.skin == toggleOnSkin){
+    					container.skin = toggleOffSkin;
+    					application.distribute("onToggleLight2", 0);
+    				}
+    				else{
+    					container.skin = toggleOnSkin;
+    					application.distribute("onToggleLight2", 1);
+    				}
+    				
+    			}	
+    		}) 		});
+
+var musicToggle = new Content({   			width: 320, top: 445, right: 0,    		skin: musicPlaySkin,
+    		active: true,
+    		behavior: Behavior({
+    			onTouchEnded: function(container) {
+    				if (container.skin == musicPauseSkin){
+    					container.skin = musicPlaySkin;
+    					application.distribute("onToggleLight3", 0);
+    				}
+    				else{
+    					container.skin = musicPauseSkin;
+    					application.distribute("onToggleLight3", 1);
+    				}
+    				
+    			}	
+    		})		});
+
+let textStyleWelcome = new Style({ font: "18px Roboto", color: "black" });
+let textStyleSick = new Style({ font: "14px Roboto", color: "black" });
+
 
 
 
