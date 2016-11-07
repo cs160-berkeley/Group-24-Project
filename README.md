@@ -1,5 +1,4 @@
 # Group-24-Project
 
 ## Fish Tank App
-Gauthier Dieppedalle, Michelle Zhang, Tim Lim, Jessica He, Ahmed Husain
-Group 24 Project
+Group 24 Project: Gauthier Dieppedalle, Michelle Zhang, Tim Lim, Jessica He, Ahmed Husain
