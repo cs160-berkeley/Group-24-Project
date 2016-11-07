@@ -60,6 +60,12 @@ var live = new Skin({   	width: 45, height: 30,    texture: new Texture("asset
 
 var rectangle = new Skin({   	width: 376, height: 34,    texture: new Texture("assets/rectangle.png"),    aspect: "fit"});
 
+var lineDashboard = new Skin({   	width: 376, height: 1,    texture: new Texture("assets/lineDashboard.png"),    aspect: "fit"});
+
+var lineVertical = new Skin({   	width: 2, height: 276,    texture: new Texture("assets/lineVertical.png"),    aspect: "fit"});
+
+var nemo = new Skin({   	width: 59, height: 58,    texture: new Texture("assets/nemo.png"),    aspect: "fit"});
+
 
 let backgroundSkin = new Skin({ fill : ["#FFFFFF", "#7DBF2E"] });let textStyleGreeting = new Style({ font: "bold 35px Roboto", color: "black" });
 let textStyleNews = new Style({ font: "25px Roboto", color: "black" });
@@ -77,6 +83,8 @@ let textStyleEdit = new Style({ font: "18px Roboto", color: "#FF2D55" });
 
 let textStyleAR = new Style({ font: "10px Roboto", color: "black" });
 let textStyleLabel2 = new Style({ font: "bold 12px Roboto", color: "#808080" });
+let textStyleLabelBlue = new Style({ font: "12px Roboto", color: "#0084FF" });
+let textStyleLabelName = new Style({ font: "12px Roboto", color: "black" });
 
 let dashboardContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
     	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleWelcome, string: "Welcome back Gauthier," }),
@@ -92,44 +100,25 @@ let dashboardContainer = Container.template($ => ({    top: 0, bottom: 0, left:
         new Content({   			width: 376, height: 34, top: 100, right: 0,    		skin: rectangle, 		}),
 		Label($, {top: 115, left: 10, style: textStyleLabel2, string: "FISH TANK STATISTICS" }),
         
+        new Content({   			width: 376, height: 1, top: 120, right: 0,    		skin: rectangle, 		}),
         
-        Label($, {top: 170, left: 20, style: textStyletoggle, string: "Heater" }),
-        heaterToggle,
-		new Content({   			width: 300, top: 208, right: 0,    		skin: lineSkin, 		}),
-		Label($, {top: 220, left: 20, style: textStyletoggle, string: "Fan" }),
-		fanToggle,
-		new Content({   			width: 300, top: 258, right: 0,    		skin: lineSkin, 		}),
-		Label($, {top: 280, left: 20, style: textStyleHeading, string: "Teach Dog"}),
-		Label($, {top: 315, left: 20, style: textStyleCommand, string: "Say Sit", 
-		active: true,
-		behavior: Behavior({
-    		onTouchBegan: function(container) {
-    			application.distribute("onToggleLight4", 1);	
-    		},
-    		onTouchEnded: function(container) {
-    			application.distribute("onToggleLight4", 0);
-    		}	
-    	})}),
-		Label($, {top: 355, left: 20, style: textStyleCommand, string: "Say Roll Over", 
-		active: true,
-		behavior: Behavior({
-    		onTouchBegan: function(container) {
-    			application.distribute("onToggleLight5", 1);	
-    		},
-    		onTouchEnded: function(container) {
-    			application.distribute("onToggleLight5", 0);
-    		}	
-    	})}),
-		Label($, {top: 395, left: 20, style: textStyleCommand, string: "Say Take a Bow", 
-		active: true,
-		behavior: Behavior({
-    		onTouchBegan: function(container) {
-    			application.distribute("onToggleLight6", 1);	
-    		},
-    		onTouchEnded: function(container) {
-    			application.distribute("onToggleLight6", 0);
-    		}	
-    	})}),
+        new Content({   			width: 376, height: 1, top: 210, right: 0,    		skin: lineDashboard, 		}),
+		
+		new Content({   			width: 376, height: 1, top: 290, right: 0,    		skin: lineDashboard, 		}),
+        
+        new Content({   			width: 2, height: 200, top: 134, right: 160,    		skin: lineVertical, 		}),
+        
+        
+		new Content({   			width: 376, height: 34, top: 290, right: 0,    		skin: rectangle, 		}),
+		
+		
+		Label($, {top: 305, left: 10, style: textStyleLabel2, string: "MY FISH" }),
+		Label($, {top: 305, right: 10, style: textStyleLabelBlue, string: "Show More" }),
+		
+		new Content({   			width: 45, height: 45, top: 330, left: 10,    		skin: nemo, 		}),
+		Label($, {top: 375, left: 17, style: textStyleLabelName, string: "Nemo" }),
+		
+		
 		Label($, {top: 440, left: 20, style: textStyleHeading, string: "Play Music" }),
 		musicToggle,
 		new Content({   			bottom: 0, left:0, height:45,     		skin: menuSkin		}),
