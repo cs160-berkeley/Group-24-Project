@@ -87,6 +87,14 @@ var fish = new Skin({   	width: 34, height: 34,    texture: new Texture("asset
 
 var alarm = new Skin({   	width: 34, height: 33,    texture: new Texture("assets/alarm.png"),    aspect: "fit"});
 
+var purpleLine = new Skin({   	width: 82, height: 43,    texture: new Texture("assets/purpleLine.png"),    aspect: "fit"});
+
+var blueLine = new Skin({   	width: 74, height: 30,    texture: new Texture("assets/blueLine.png"),    aspect: "fit"});
+
+var orangeLine = new Skin({   	width: 80, height: 8,    texture: new Texture("assets/orangeLine.png"),    aspect: "fit"});
+
+var greenLine = new Skin({   	width: 70, height: 2,    texture: new Texture("assets/greenLine.png"),    aspect: "fit"});
+
 let backgroundSkin = new Skin({ fill : ["#FFFFFF", "#7DBF2E"] });let textStyleGreeting = new Style({ font: "bold 35px Roboto", color: "black" });
 let textStyleNews = new Style({ font: "25px Roboto", color: "black" });
 let textStyleHeading = new Style({ font: "bold 25px Roboto", color: "black" });
@@ -137,7 +145,13 @@ let dashboardContainer = Container.template($ => ({    top: 0, bottom: 0, left:
         new Content({   			width: 376, height: 1, top: 210, right: 0,    		skin: lineDashboard, 		}),
 		Label($, {top: 140, left: 15, style: textStyleTemp, string: "15°C" }),
 		Label($, {top: 163, left: 15, style: textStyleL, string: "Temperature" }),
-
+		
+		new Content({   			width: 60, top: 180, left: 15,    		skin: blueLine, 		}),
+		new Content({   			width: 60, top: 190, left: 170,    		skin: orangeLine, 		}),
+		new Content({   			width: 60, top: 270, left: 15,    		skin: greenLine, 		}),
+		new Content({   			width: 60, top: 250, left: 170,    		skin: purpleLine, 		}),
+			
+	
 		Label($, {top: 140, left: 170, style: textStyleTemp, string: "7" }),
 		Label($, {top: 163, left: 170, style: textStyleL, string: "pH" }),
 		
@@ -193,7 +207,7 @@ let dashboardContainer = Container.template($ => ({    top: 0, bottom: 0, left:
 		
 		new Content({   			width: 26, top: 522, left: 25,    		skin: aquarium, 		}),
 		
-		new Content({   			width: 26, top: 520, left: 103,    		skin: fish, 		}),    	    	new Content({   			width: 26, top: 520, right: 103,    		skin: alarm, 		}),    	    ]}));
+		new Content({   			width: 26, top: 520, left: 103,    		skin: fish, 		}),    	    	new Content({   			width: 26, top: 520, right: 105,    		skin: alarm, 		}),    	    ]}));
 
 
 
