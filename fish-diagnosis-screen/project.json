@@ -1,0 +1,16 @@
+{
+    "title":"fish diagnosis screen",
+    "description":"This template can be used to create a basic KinomaJS application .",
+    "id":"fish-diagnosis-screen.project.kinoma.marvell.com",
+    "tags":[
+    ],
+    "Create":{
+        "main":"main"
+    },
+    "Element":{
+        "main":"main"
+    },
+    "iap140": {
+    	"main":"main"
+    }
+}
