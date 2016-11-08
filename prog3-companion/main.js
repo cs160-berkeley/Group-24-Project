@@ -1,3 +1,4 @@
+
 import Pins from "pins";
 
 let toolbarSkin = new Skin({      width: 640, height: 34,      texture: new Texture("assets/toolbar.png"),      aspect: "fit"});
@@ -66,11 +67,30 @@ var lineVertical = new Skin({   	width: 2, height: 276,    texture: new Textur
 
 var nemo = new Skin({   	width: 59, height: 58,    texture: new Texture("assets/nemo.png"),    aspect: "fit"});
 
+var gill = new Skin({   	width: 59, height: 58,    texture: new Texture("assets/gill.png"),    aspect: "fit"});
+
+var bubbles = new Skin({   	width: 59, height: 58,    texture: new Texture("assets/bubbles.png"),    aspect: "fit"});
+
+var dory = new Skin({   	width: 59, height: 58,    texture: new Texture("assets/dory.png"),    aspect: "fit"});
+
+var bloat = new Skin({   	width: 59, height: 58,    texture: new Texture("assets/bloat.png"),    aspect: "fit"});
+
+var menu2 = new Skin({   	width: 376, height: 48,    texture: new Texture("assets/menu2.png"),    aspect: "fit"});
+
+var foodFish = new Skin({   	width: 38, height: 38,    texture: new Texture("assets/foodFish.png"),    aspect: "fit"});
+
+var aquarium = new Skin({   	width: 32, height: 32,    texture: new Texture("assets/aquarium.png"),    aspect: "fit"});
+
+var fish = new Skin({   	width: 34, height: 34,    texture: new Texture("assets/fish.png"),    aspect: "fit"});
+
+var fish = new Skin({   	width: 34, height: 34,    texture: new Texture("assets/fish.png"),    aspect: "fit"});
+
+var alarm = new Skin({   	width: 34, height: 33,    texture: new Texture("assets/alarm.png"),    aspect: "fit"});
 
 let backgroundSkin = new Skin({ fill : ["#FFFFFF", "#7DBF2E"] });let textStyleGreeting = new Style({ font: "bold 35px Roboto", color: "black" });
 let textStyleNews = new Style({ font: "25px Roboto", color: "black" });
 let textStyleHeading = new Style({ font: "bold 25px Roboto", color: "black" });
-let textStyletoggle = new Style({ font: "25px Roboto", color: "#FF2D55" });
+let textStyletoggle = new Style({ font: "20px Roboto", color: "black" });
 let textStyleCommand = new Style({ font: "bold 25px Roboto", color: "#FF2D55" });
 let textStyleReading = new Style({ font: "bold 45px Roboto", color: "black" });
 let textStyleInfo = new Style({ font: "bold 25px Roboto", color: "black" });
@@ -85,6 +105,18 @@ let textStyleAR = new Style({ font: "10px Roboto", color: "black" });
 let textStyleLabel2 = new Style({ font: "bold 12px Roboto", color: "#808080" });
 let textStyleLabelBlue = new Style({ font: "12px Roboto", color: "#0084FF" });
 let textStyleLabelName = new Style({ font: "12px Roboto", color: "black" });
+
+let textStyleTemp = new Style({ font: "24px Roboto", color: "black" });
+let textStyleL = new Style({ font: "12px Roboto", color: "black" });
+
+
+let textStyleMenu = new Style({ font: "12px Roboto", color: "gray" });
+
+var autoFeedingToggle = new Content({   			width: 70, top: 402, right: 5,    		skin: toggleOffSkin,    		active: true,    		behavior: Behavior({    			onTouchEnded: function(container) {    				if (container.skin == toggleOnSkin){    					container.skin = toggleOffSkin;    					//application.distribute("onToggleLight", 0);    				}    				else{    					container.skin = toggleOnSkin;    					//application.distribute("onToggleLight", 1);    				}    				    			}	    		}) 		});
+		
+		
+
+var autoTemperatureToggle = new Content({   			width: 70, top: 450, right: 5,    		skin: toggleOffSkin,    		active: true,    		behavior: Behavior({    			onTouchEnded: function(container) {    				if (container.skin == toggleOnSkin){    					container.skin = toggleOffSkin;    					//application.distribute("onToggleLight", 0);    				}    				else{    					container.skin = toggleOnSkin;    					//application.distribute("onToggleLight", 1);    				}    				    			}	    		}) 		});
 
 let dashboardContainer = Container.template($ => ({    top: 0, bottom: 0, left: 0, right: 0,    active: true, skin: backgroundSkin, state: 0,    contents: [
     	new Content({     		top: -8, left: 0, right: 0,    			skin: toolbarSkin, 		}),        Label($, {top: 30, left: 20, style: textStyleWelcome, string: "Welcome back Gauthier," }),
@@ -103,6 +135,17 @@ let dashboardContainer = Container.template($ => ({    top: 0, bottom: 0, left:
         new Content({   			width: 376, height: 1, top: 120, right: 0,    		skin: rectangle, 		}),
         
         new Content({   			width: 376, height: 1, top: 210, right: 0,    		skin: lineDashboard, 		}),
+		Label($, {top: 140, left: 15, style: textStyleTemp, string: "15°C" }),
+		Label($, {top: 163, left: 15, style: textStyleL, string: "Temperature" }),
+
+		Label($, {top: 140, left: 170, style: textStyleTemp, string: "7" }),
+		Label($, {top: 163, left: 170, style: textStyleL, string: "pH" }),
+		
+		Label($, {top: 215, left: 15, style: textStyleTemp, string: "35ppt" }),
+		Label($, {top: 238, left: 15, style: textStyleL, string: "Salinity" }),
+		
+		Label($, {top: 215, left: 170, style: textStyleTemp, string: "54mS/cm" }),
+		Label($, {top: 238, left: 170, style: textStyleL, string: "Conductivity" }),
 		
 		new Content({   			width: 376, height: 1, top: 290, right: 0,    		skin: lineDashboard, 		}),
         
@@ -116,175 +159,41 @@ let dashboardContainer = Container.template($ => ({    top: 0, bottom: 0, left:
 		Label($, {top: 305, right: 10, style: textStyleLabelBlue, string: "Show More" }),
 		
 		new Content({   			width: 45, height: 45, top: 330, left: 10,    		skin: nemo, 		}),
-		Label($, {top: 375, left: 17, style: textStyleLabelName, string: "Nemo" }),
+		Label($, {top: 375, left: 18, style: textStyleLabelName, string: "Nemo" }),
+		
+		new Content({   			width: 45, height: 45, top: 330, left: 70,    		skin: gill, 		}),
+		Label($, {top: 375, left: 84, style: textStyleLabelName, string: "Gill" }),
+		
+		new Content({   			width: 45, height: 45, top: 330, left: 130,    		skin: bubbles, 		}),
+		Label($, {top: 375, left: 135, style: textStyleLabelName, string: "Bubbles" }),
+		
+		new Content({   			width: 45, height: 45, top: 330, left: 190,    		skin: dory, 		}),
+		Label($, {top: 375, left: 203, style: textStyleLabelName, string: "Dory" }),
+		
+		new Content({   			width: 45, height: 45, top: 330, left: 250,    		skin: bloat, 		}),
+		Label($, {top: 375, left: 260, style: textStyleLabelName, string: "Bloat" }),
+		
+		new Content({   			width: 376, height: 34, top: 390, right: 0,    		skin: rectangle, 		}),
+		
+		Label($, {top: 405, left: 10, style: textStyleLabel2, string: "SWITCH BOARD" }),
+		autoFeedingToggle,
+		autoTemperatureToggle,
+		new Content({   			width: 300, top: 470, right: 0,    		skin: lineSkin, 		}),
+		Label($, {top: 437, left: 10, style: textStyletoggle, string: "Auto Feeding" }),
+		
+		Label($, {top: 484, left: 10, style: textStyletoggle, string: "Auto Temperature Adjustment" }),
 		
 		
-		Label($, {top: 440, left: 20, style: textStyleHeading, string: "Play Music" }),
-		musicToggle,
-		new Content({   			bottom: 0, left:0, height:45,     		skin: menuSkin		}),
-		new Content({   			bottom: 0, left:0, height:44,     		skin: menuBarDashboardSkin, 						behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new dashboardContainer();	            	application.add(currentScreen);
-	            	sickLabel = new Label({top: 70, left: 20, style: textStyleNews, string: "Pet is Sick" });
-	            	
-	            	musicToggle = new Content({   			width: 320, top: 445, right: 0,    		skin: musicPlaySkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == musicPauseSkin){
-    					container.skin = musicPlaySkin;
-    					application.distribute("onToggleLight3", 0);
-    				}
-    				else{
-    					container.skin = musicPauseSkin;
-    					application.distribute("onToggleLight3", 1);
-    				}
-    				
-    			}	
-    		})		});
-	            	
-	            	fanToggle = new Content({   			width: 70, top: 190, right: 10,    		skin: toggleOffSkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == toggleOnSkin){
-    					container.skin = toggleOffSkin;
-    					application.distribute("onToggleLight2", 0);
-    				}
-    				else{
-    					container.skin = toggleOnSkin;
-    					application.distribute("onToggleLight2", 1);
-    				}
-    				
-    			}	
-    		}) 		});
-	            	
-	            	heaterToggle = new Content({   			width: 70, top: 140, right: 10,    		skin: toggleOffSkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == toggleOnSkin){
-    					container.skin = toggleOffSkin;
-    					application.distribute("onToggleLight", 0);
-    				}
-    				else{
-    					container.skin = toggleOnSkin;
-    					application.distribute("onToggleLight", 1);
-    				}
-    				
-    			}	
-    		}) 		});	    		}		    	})		}),
-		new Content({   			bottom: 0, left:80, height:44,    		skin: menuBarMyPetSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new myPetContainer();	            	application.add(currentScreen);
-	            	sickLabel = new Label({top: 70, left: 20, style: textStyleNews, string: "Pet is Sick" });
-	            	
-	            	musicToggle = new Content({   			width: 320, top: 445, right: 0,    		skin: musicPlaySkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == musicPauseSkin){
-    					container.skin = musicPlaySkin;
-    					application.distribute("onToggleLight3", 0);
-    				}
-    				else{
-    					container.skin = musicPauseSkin;
-    					application.distribute("onToggleLight3", 1);
-    				}
-    				
-    			}	
-    		})		});
-	            	
-	            	fanToggle = new Content({   			width: 70, top: 190, right: 10,    		skin: toggleOffSkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == toggleOnSkin){
-    					container.skin = toggleOffSkin;
-    					application.distribute("onToggleLight2", 0);
-    				}
-    				else{
-    					container.skin = toggleOnSkin;
-    					application.distribute("onToggleLight2", 1);
-    				}
-    				
-    			}	
-    		}) 		});
-	            	
-	            	heaterToggle = new Content({   			width: 70, top: 140, right: 10,    		skin: toggleOffSkin,    		active: true,    		behavior: Behavior({    			onTouchEnded: function(container) {    				if (container.skin == toggleOnSkin){    					container.skin = toggleOffSkin;    					application.distribute("onToggleLight", 0);    				}    				else{    					container.skin = toggleOnSkin;    					application.distribute("onToggleLight", 1);    				}    				    			}	    		}) 		});	    		}		    	})		}),
-		new Content({   			bottom: 0, left:160, height:44,    		skin: menuBarFoodSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new FoodContainer();	            	application.add(currentScreen);
-	            	sickLabel = new Label({top: 70, left: 20, style: textStyleNews, string: "Pet is Sick" });
-	            	
-	            	musicToggle = new Content({   			width: 320, top: 445, right: 0,    		skin: musicPlaySkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == musicPauseSkin){
-    					container.skin = musicPlaySkin;
-    					application.distribute("onToggleLight3", 0);
-    				}
-    				else{
-    					container.skin = musicPauseSkin;
-    					application.distribute("onToggleLight3", 1);
-    				}
-    				
-    			}	
-    		})		});
-	            	
-	            	fanToggle = new Content({   			width: 70, top: 190, right: 10,    		skin: toggleOffSkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == toggleOnSkin){
-    					container.skin = toggleOffSkin;
-    					application.distribute("onToggleLight2", 0);
-    				}
-    				else{
-    					container.skin = toggleOnSkin;
-    					application.distribute("onToggleLight2", 1);
-    				}
-    				
-    			}	
-    		}) 		});
-	            	
-	            	heaterToggle = new Content({   			width: 70, top: 140, right: 10,    		skin: toggleOffSkin,    		active: true,    		behavior: Behavior({    			onTouchEnded: function(container) {    				if (container.skin == toggleOnSkin){    					container.skin = toggleOffSkin;    					application.distribute("onToggleLight", 0);    				}    				else{    					container.skin = toggleOnSkin;    					application.distribute("onToggleLight", 1);    				}    				    			}	    		}) 		});	    		}		    	})		}),
+		new Content({   			width: 400, top: 520, left: -20,    		skin: menu2, 		}),
+	    Label($, {top: 552, left: 25, style: textStyleMenu, string: "Home" }),
+		Label($, {top: 552, left: 95, style: textStyleMenu, string: "My Fishes" }),
+		Label($, {top: 552, right: 95, style: textStyleMenu, string: "Schedules" }),
+		Label($, {top: 552, right: 25, style: textStyleMenu, string: "Food" }),
+		new Content({   			width: 28, top: 520, right: 25,    		skin: foodFish, 		}),
 		
-		new Content({   			bottom: 0, left:240, height:44,    		skin: menuBarPetFeederSkin, 			active: true,			behavior: Behavior({	    		onTouchEnded: function(container) {
-	    			application.remove(currentScreen);  	            	currentScreen = new petFeederContainer();	            	application.add(currentScreen);
-	            	sickLabel = new Label({top: 70, left: 20, style: textStyleNews, string: "Pet is Sick" });
-	            	
-	            	musicToggle = new Content({   			width: 320, top: 445, right: 0,    		skin: musicPlaySkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == musicPauseSkin){
-    					container.skin = musicPlaySkin;
-    					application.distribute("onToggleLight3", 0);
-    				}
-    				else{
-    					container.skin = musicPauseSkin;
-    					application.distribute("onToggleLight3", 1);
-    				}
-    				
-    			}	
-    		})		});
-	            	
-	            	fanToggle = new Content({   			width: 70, top: 190, right: 10,    		skin: toggleOffSkin,
-    		active: true,
-    		behavior: Behavior({
-    			onTouchEnded: function(container) {
-    				if (container.skin == toggleOnSkin){
-    					container.skin = toggleOffSkin;
-    					application.distribute("onToggleLight2", 0);
-    				}
-    				else{
-    					container.skin = toggleOnSkin;
-    					application.distribute("onToggleLight2", 1);
-    				}
-    				
-    			}	
-    		}) 		});
-	            	
-	            	heaterToggle = new Content({   			width: 70, top: 140, right: 10,    		skin: toggleOffSkin,    		active: true,    		behavior: Behavior({    			onTouchEnded: function(container) {    				if (container.skin == toggleOnSkin){    					container.skin = toggleOffSkin;    					application.distribute("onToggleLight", 0);    				}    				else{    					container.skin = toggleOnSkin;    					application.distribute("onToggleLight", 1);    				}    				    			}	    		}) 		});	    		}		    	})		}),    ]}));
+		new Content({   			width: 26, top: 522, left: 25,    		skin: aquarium, 		}),
+		
+		new Content({   			width: 26, top: 520, left: 103,    		skin: fish, 		}),    	    	new Content({   			width: 26, top: 520, right: 103,    		skin: alarm, 		}),    	    ]}));
 
 
 
