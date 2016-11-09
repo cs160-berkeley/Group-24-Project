@@ -24,6 +24,35 @@ let textStyleL = new Style({ font: "12px Roboto", color: "black" });
 
 let textStyleMenu = new Style({ font: "12px Roboto", color: "gray" });
 
+var menu2 = new Skin({ 
+    width: 376, height: 48,
+    texture: new Texture("assets/menu2.png"),
+    aspect: "fit"
+});
+
+var aquarium = new Skin({ 
+    width: 32, height: 32,
+    texture: new Texture("assets/aquarium.png"),
+    aspect: "fit"
+});
+
+var fish = new Skin({ 
+    width: 34, height: 34,
+    texture: new Texture("assets/fish.png"),
+    aspect: "fit"
+});
+
+var alarm = new Skin({ 
+    width: 34, height: 33,
+    texture: new Texture("assets/alarm.png"),
+    aspect: "fit"
+});
+
+var foodFish = new Skin({ 
+    width: 38, height: 38,
+    texture: new Texture("assets/foodFish.png"),
+    aspect: "fit"
+});
 
 var nemo = new Skin({ 
     width: 59, height: 58,
@@ -56,8 +85,8 @@ var bloat = new Skin({
 });
 
 //==================================================
+//============== AHMED's ADDED CODE ================
 //==================================================
-//============== AHMED's ADDED CODE ========
 let leftTextStyleNews = new Style({ font: "25px Roboto", color: "black", horizontal: "left" });
 let leftTextStyleEdit = new Style({ font: "18px Roboto", color: "#333333", horizontal: "left" });
 let fishNameStyle = new Style({ font: "light 18px Roboto", color: "black", horizontal: "left"  });
@@ -135,9 +164,12 @@ let line = Content.template($ => ({
   top: $.top, left: 0, right: 0, height: $.height,
         skin: $.skin,
 }));
-//==================================================
 
-let fishList = Container.template($ => ({
+
+//==================================================
+//============== Diagnosis Screen ==================
+//==================================================
+let fishDiagnosis = Container.template($ => ({
     top: 0, bottom: 0, left: 0, right: 0,
     active: true, skin: backgroundSkin, state: 0,
     contents: [
@@ -145,6 +177,223 @@ let fishList = Container.template($ => ({
     		top: -8, left: 0, right: 0, 
    			skin: fishListToolBarSkin, 
 		}),
+
+      new Content({
+        top: 10, left: -220, right: 0, height: 50,
+        skin: backButtonSkin,
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          application.remove(container.container);
+          application.add(new fishList());
+          trace("BACK\n");
+         },
+       }),
+      }),
+
+      new Label({
+        top: 10, left: 100, width: 250, height: 50, style: leftTextStyleNews, string: "  Diagnosis",
+        skin: fishListSkin,
+      }),
+
+      new line({top: 60, height: 1, skin: darkGray}),
+
+      new Label({
+        top: 61, left: 0 , right: 0, height: 20, string: " CHOOSE A SYMPTOM THAT YOUR FISH HAS", 
+        style: instructionStyle, skin: fishListSkin,
+      }),
+
+      new line({top: 81, height: 1, skin: darkGray}),
+
+
+      new Container({
+        top: 82, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: whiteFishSkin,
+          }),
+
+          new Text({
+            top: 25, left: 100, right: 50, height: 58, style: fishNameStyle, string: "Fish has a white skin",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("Fish has a white skin\n");
+         },
+       }),
+      }),
+
+
+      new Container({
+        top: 150, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: bubbleEyeSkin,
+          }),
+
+          new Text({
+            top: 25, left: 100, right: 50, height: 58, style: fishNameStyle, string: "Fish has blurry eyes",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("Fish has blurry eyes\n");
+         },
+       }),
+      }),
+
+      new Container({
+        top: 218, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: rockFishSkin,
+          }),
+
+          new Text({
+            top: 25, left: 100, right: 50, height: 58, style: fishNameStyle, string: "Fish is constantly hiding behind rocks",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("Fish is constantly hiding behind rocks\n");
+         },
+       }),
+      }),
+
+      new Container({
+        top: 286, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: sickFishSkin,
+          }),
+
+          new Text({
+            top: 25, left: 100, right: 50, height: 58, style: fishNameStyle, string: "Fish has a broken fin",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("Fish has a broken fin\n");
+         },
+       }),
+      }),
+
+      new Container({
+        top: 354, left: 0, right: 0, contents: [
+
+          new Text({
+            top: 25, left: 15, right: 50, height: 58, style: leftTextStyleNews, string: "None of the above?",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("None of the above\n");
+         },
+       }),
+      }),
+
+
+      new Content({ 
+        width: 400, top: 520, left: -20,
+        skin: menu2, 
+    }),
+
+      Label($, {top: 552, left: 25, style: textStyleMenu, string: "Home" }),
+      Label($, {top: 552, left: 95, style: textStyleMenu, string: "My Fishes" }),
+      Label($, {top: 552, right: 95, style: textStyleMenu, string: "Schedules" }),
+      Label($, {top: 552, right: 25, style: textStyleMenu, string: "Food" }),
+      new Content({ 
+          width: 28, top: 520, right: 25,
+          skin: foodFish, 
+      }),
+      
+      new Content({ 
+          width: 26, top: 522, left: 25,
+          skin: aquarium, 
+      }),
+      
+      new Content({ 
+          width: 26, top: 520, left: 103,
+          skin: fish, 
+      }),
+      
+      new Content({ 
+        width: 26, top: 520, right: 105,
+        skin: alarm, 
+      }),
+
+      ],
+    }));
+
+
+
+//==================================================
+//============== Fish List Screen ==================
+//==================================================
+let fishList = Container.template($ => ({
+    top: 0, bottom: 0, left: 0, right: 0,
+    active: true, skin: backgroundSkin, state: 0,
+    contents: [
+      new Content({ 
+        top: -8, left: 0, right: 0, 
+        skin: fishListToolBarSkin, 
+    }),
 
       new Content({
         top: 10, left: -220, right: 0, height: 50,
@@ -226,6 +475,8 @@ let fishList = Container.template($ => ({
         behavior: Behavior({
          onTouchEnded: function(container) {
           trace("BUBBLES\n");
+          application.remove(container.container);
+          application.add(new fishDiagnosis());
          },
        }),
       }),
@@ -364,42 +615,11 @@ let fishList = Container.template($ => ({
     }),
 
       ],
-    }));
+}));
 
-var menu2 = new Skin({ 
-    width: 376, height: 48,
-    texture: new Texture("assets/menu2.png"),
-    aspect: "fit"
-});
 
-var aquarium = new Skin({ 
-    width: 32, height: 32,
-    texture: new Texture("assets/aquarium.png"),
-    aspect: "fit"
-});
-
-var fish = new Skin({ 
-    width: 34, height: 34,
-    texture: new Texture("assets/fish.png"),
-    aspect: "fit"
-});
-
-var alarm = new Skin({ 
-    width: 34, height: 33,
-    texture: new Texture("assets/alarm.png"),
-    aspect: "fit"
-});
-
-var foodFish = new Skin({ 
-    width: 38, height: 38,
-    texture: new Texture("assets/foodFish.png"),
-    aspect: "fit"
-});
 
 application.add(new fishList());
-
-
-
 
 
 

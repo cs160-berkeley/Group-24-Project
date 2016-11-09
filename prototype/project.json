@@ -1,7 +1,7 @@
 {
-    "title":"fish list screen",
+    "title":"Prototype",
     "description":"This template can be used to create a basic KinomaJS application .",
-    "id":"fish-list-scredden.project.kinoma.marvell.com",
+    "id":"prototype1234.project.kinoma.marvell.com",
     "tags":[
         "emptySample"
     ],
@@ -11,5 +11,7 @@
     "Element":{
         "main":"main"
     },
-    "iap140": {        "main":"main"    }
+    "iap140": {
+    	"main":"main"
+    }
 }
