@@ -333,8 +333,68 @@ let fishList = Container.template($ => ({
        }),
       }),
 
+
+    new Content({ 
+        width: 400, top: 520, left: -20,
+        skin: menu2, 
+    }),
+
+    Label($, {top: 552, left: 25, style: textStyleMenu, string: "Home" }),
+    Label($, {top: 552, left: 95, style: textStyleMenu, string: "My Fishes" }),
+    Label($, {top: 552, right: 95, style: textStyleMenu, string: "Schedules" }),
+    Label($, {top: 552, right: 25, style: textStyleMenu, string: "Food" }),
+    new Content({ 
+        width: 28, top: 520, right: 25,
+        skin: foodFish, 
+    }),
+    
+    new Content({ 
+        width: 26, top: 522, left: 25,
+        skin: aquarium, 
+    }),
+    
+    new Content({ 
+        width: 26, top: 520, left: 103,
+        skin: fish, 
+    }),
+      
+      new Content({ 
+        width: 26, top: 520, right: 105,
+        skin: alarm, 
+    }),
+
       ],
     }));
+
+var menu2 = new Skin({ 
+    width: 376, height: 48,
+    texture: new Texture("assets/menu2.png"),
+    aspect: "fit"
+});
+
+var aquarium = new Skin({ 
+    width: 32, height: 32,
+    texture: new Texture("assets/aquarium.png"),
+    aspect: "fit"
+});
+
+var fish = new Skin({ 
+    width: 34, height: 34,
+    texture: new Texture("assets/fish.png"),
+    aspect: "fit"
+});
+
+var alarm = new Skin({ 
+    width: 34, height: 33,
+    texture: new Texture("assets/alarm.png"),
+    aspect: "fit"
+});
+
+var foodFish = new Skin({ 
+    width: 38, height: 38,
+    texture: new Texture("assets/foodFish.png"),
+    aspect: "fit"
+});
 
 application.add(new fishList());
 
