@@ -1,0 +1,14 @@
+{
+    "title":"schedule-screen",
+    "description":"This template builds an app that traces \"Hello, World!\" and breaks into the debugger.",
+    "id":"schedule-screen.project.kinoma.marvell.com",
+    "tags":[
+        "emptySample"
+    ],
+    "Create":{
+        "main":"main"
+    },
+    "Element":{
+        "main":"main"
+    },    "iap140": {        "main":"main"    }
+}

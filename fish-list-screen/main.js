@@ -1,0 +1,347 @@
+let backgroundSkin = new Skin({ fill : ["#FFFFFF", "#7DBF2E"] });
+let textStyleGreeting = new Style({ font: "bold 35px Roboto", color: "black" });
+let textStyleNews = new Style({ font: "25px Roboto", color: "black" });
+let textStyleHeading = new Style({ font: "bold 25px Roboto", color: "black" });
+let textStyletoggle = new Style({ font: "20px Roboto", color: "black" });
+let textStyleCommand = new Style({ font: "bold 25px Roboto", color: "#FF2D55" });
+let textStyleReading = new Style({ font: "bold 45px Roboto", color: "black" });
+let textStyleInfo = new Style({ font: "bold 25px Roboto", color: "black" });
+
+let textStyleFood = new Style({ font: "20px Roboto", color: "black" });
+let textStyleFoodBold = new Style({ font: "bold 20px Roboto", color: "black" });
+
+let textStyleEdit = new Style({ font: "18px Roboto", color: "#FF2D55" });
+
+
+let textStyleAR = new Style({ font: "10px Roboto", color: "black" });
+let textStyleLabel2 = new Style({ font: "bold 12px Roboto", color: "#808080" });
+let textStyleLabelBlue = new Style({ font: "12px Roboto", color: "#0084FF" });
+let textStyleLabelName = new Style({ font: "12px Roboto", color: "black" });
+
+let textStyleTemp = new Style({ font: "24px Roboto", color: "black" });
+let textStyleL = new Style({ font: "12px Roboto", color: "black" });
+
+
+let textStyleMenu = new Style({ font: "12px Roboto", color: "gray" });
+
+
+var nemo = new Skin({ 
+    width: 59, height: 58,
+    texture: new Texture("assets/nemo.png"),
+    aspect: "fit"
+});
+
+var gill = new Skin({ 
+    width: 59, height: 58,
+    texture: new Texture("assets/gill.png"),
+    aspect: "fit"
+});
+
+var bubbles = new Skin({ 
+    width: 59, height: 58,
+    texture: new Texture("assets/bubbles.png"),
+    aspect: "fit"
+});
+
+var dory = new Skin({ 
+    width: 59, height: 58,
+    texture: new Texture("assets/dory.png"),
+    aspect: "fit"
+});
+
+var bloat = new Skin({ 
+    width: 59, height: 58,
+    texture: new Texture("assets/bloat.png"),
+    aspect: "fit"
+});
+
+//==================================================
+//==================================================
+//============== AHMED's ADDED CODE ========
+let leftTextStyleNews = new Style({ font: "25px Roboto", color: "black", horizontal: "left" });
+let leftTextStyleEdit = new Style({ font: "18px Roboto", color: "#333333", horizontal: "left" });
+let fishNameStyle = new Style({ font: "light 18px Roboto", color: "black", horizontal: "left"  });
+let instructionStyle = new Style({ font: "12px Roboto", color: "#808080", horizontal: "left" });
+
+let fishListToolBarSkin = new Skin({ 
+    width: 459, height: 30,
+    texture: new Texture("assets/fishListToolBar.png"),
+    aspect: "fit"
+});
+
+let backButtonSkin = new Skin({ 
+    width: 230, height: 108,
+    texture: new Texture("assets/backButton.png"),
+    aspect: "fit"
+});
+
+let addFishButtonSkin = new Skin({ 
+    width: 34, height: 34,
+    texture: new Texture("assets/addFishButton.png"),
+    aspect: "fit"
+});
+
+let arrowSkin = new Skin({ 
+    width: 23, height: 37,
+    texture: new Texture("assets/arrow.png"),
+    aspect: "fit"
+});
+
+let warningSignSkin = new Skin({ 
+    width: 35, height: 35,
+    texture: new Texture("assets/warning-icon-hi.png"),
+    aspect: "fit"
+});
+
+let checkMarkSkin = new Skin({ 
+    width: 45, height: 41,
+    texture: new Texture("assets/checkMark.png"),
+    aspect: "fit"
+});
+
+let bubbleEyeSkin = new Skin({ 
+    width: 58, height: 59,
+    texture: new Texture("assets/whiteFish.png"),
+    aspect: "fit"
+});
+
+let whiteFishSkin = new Skin({ 
+    width: 58, height: 59,
+    texture: new Texture("assets/bubbleEye.png"),
+    aspect: "fit"
+});
+
+let rockFishSkin = new Skin({ 
+    width: 58, height: 59,
+    texture: new Texture("assets/rockFish.png"),
+    aspect: "fit"
+});
+
+let sickFishSkin = new Skin({ 
+    width: 58, height: 59,
+    texture: new Texture("assets/sickFish.png"),
+    aspect: "fit"
+});
+
+let fishListSkin = new Skin({
+  fill: "#F7F7F7",
+});
+
+let darkGray = new Skin({
+  fill: "#DDDDDD",
+});
+
+let line = Content.template($ => ({
+  top: $.top, left: 0, right: 0, height: $.height,
+        skin: $.skin,
+}));
+//==================================================
+
+let fishList = Container.template($ => ({
+    top: 0, bottom: 0, left: 0, right: 0,
+    active: true, skin: backgroundSkin, state: 0,
+    contents: [
+    	new Content({ 
+    		top: -8, left: 0, right: 0, 
+   			skin: fishListToolBarSkin, 
+		}),
+
+      new Content({
+        top: 10, left: -220, right: 0, height: 50,
+        skin: backButtonSkin,
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("BACK\n");
+         },
+       }),
+      }),
+
+      new Label({
+        top: 10, left: 100, width: 250, height: 50, style: leftTextStyleNews, string: "    My Fish",
+        skin: fishListSkin,
+      }),
+
+      new line({top: 60, height: 1, skin: darkGray}),
+
+      new Container({top: 61, left: 0, right: 0, contents: [
+        new Content({
+          top: 7, left: -280, right: 0, height: 34,
+          skin: addFishButtonSkin,
+        }),
+
+        new Label({
+          top: 0, left: 40, right: 0, height: 50, style: leftTextStyleEdit, string: "Add a new fish",
+          skin: backgroundSkin,
+        }),
+
+        new Content({
+          top: 7, left: 0, right: -280, height: 34,
+          skin: arrowSkin,
+        }),
+
+        new line({top: 51, height: 1, skin: darkGray}),
+      ],
+
+      active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("ADDING FISH\n");
+         },
+       }),
+
+      }),
+
+      new line({top: 113, height: 30, skin: fishListSkin}),
+      new line({top: 143, height: 1, skin: darkGray}),
+
+
+      new Container({
+        top: 144, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: bubbles,
+          }),
+
+          new Label({
+            top: 5, left: 100, right: 0, height: 58, style: fishNameStyle, string: "Bubbles",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -200, height: 35,
+            skin: warningSignSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("BUBBLES\n");
+         },
+       }),
+      }),
+
+
+      new Container({
+        top: 213, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: nemo,
+          }),
+
+          new Label({
+            top: 5, left: 100, right: 0, height: 58, style: fishNameStyle, string: "Nemo",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -200, height: 35,
+            skin: checkMarkSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("NEMO\n");
+         },
+       }),
+      }),
+
+      new Container({
+        top: 281, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: gill,
+          }),
+
+          new Label({
+            top: 5, left: 100, right: 0, height: 58, style: fishNameStyle, string: "Gill",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -200, height: 35,
+            skin: checkMarkSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("GILL\n");
+         },
+       }),
+      }),
+
+      new Container({
+        top: 281 + 68 + 1, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: dory,
+          }),
+
+          new Label({
+            top: 5, left: 100, right: 0, height: 58, style: fishNameStyle, string: "Dory",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -200, height: 35,
+            skin: checkMarkSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("DORY\n");
+         },
+       }),
+      }),
+
+      ],
+    }));
+
+application.add(new fishList());
+
+
+
+
+
+
+
+
