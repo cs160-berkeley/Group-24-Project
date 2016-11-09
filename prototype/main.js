@@ -85,8 +85,8 @@ var bloat = new Skin({
 });
 
 //==================================================
+//============== AHMED's ADDED CODE ================
 //==================================================
-//============== AHMED's ADDED CODE ========
 let leftTextStyleNews = new Style({ font: "25px Roboto", color: "black", horizontal: "left" });
 let leftTextStyleEdit = new Style({ font: "18px Roboto", color: "#333333", horizontal: "left" });
 let fishNameStyle = new Style({ font: "light 18px Roboto", color: "black", horizontal: "left"  });
@@ -164,8 +164,11 @@ let line = Content.template($ => ({
   top: $.top, left: 0, right: 0, height: $.height,
         skin: $.skin,
 }));
-//==================================================
 
+
+//==================================================
+//============== Diagnosis Screen ==================
+//==================================================
 let fishDiagnosis = Container.template($ => ({
     top: 0, bottom: 0, left: 0, right: 0,
     active: true, skin: backgroundSkin, state: 0,
@@ -376,7 +379,244 @@ let fishDiagnosis = Container.template($ => ({
       ],
     }));
 
+
+
+//==================================================
+//============== Fish List Screen ==================
+//==================================================
+let fishList = Container.template($ => ({
+    top: 0, bottom: 0, left: 0, right: 0,
+    active: true, skin: backgroundSkin, state: 0,
+    contents: [
+      new Content({ 
+        top: -8, left: 0, right: 0, 
+        skin: fishListToolBarSkin, 
+    }),
+
+      new Content({
+        top: 10, left: -220, right: 0, height: 50,
+        skin: backButtonSkin,
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("BACK\n");
+         },
+       }),
+      }),
+
+      new Label({
+        top: 10, left: 100, width: 250, height: 50, style: leftTextStyleNews, string: "    My Fish",
+        skin: fishListSkin,
+      }),
+
+      new line({top: 60, height: 1, skin: darkGray}),
+
+      new Container({top: 61, left: 0, right: 0, contents: [
+        new Content({
+          top: 7, left: -280, right: 0, height: 34,
+          skin: addFishButtonSkin,
+        }),
+
+        new Label({
+          top: 0, left: 40, right: 0, height: 50, style: leftTextStyleEdit, string: "Add a new fish",
+          skin: backgroundSkin,
+        }),
+
+        new Content({
+          top: 7, left: 0, right: -280, height: 34,
+          skin: arrowSkin,
+        }),
+
+        new line({top: 51, height: 1, skin: darkGray}),
+      ],
+
+      active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("ADDING FISH\n");
+         },
+       }),
+
+      }),
+
+      new line({top: 113, height: 30, skin: fishListSkin}),
+      new line({top: 143, height: 1, skin: darkGray}),
+
+
+      new Container({
+        top: 144, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: bubbles,
+          }),
+
+          new Label({
+            top: 5, left: 100, right: 0, height: 58, style: fishNameStyle, string: "Bubbles",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -200, height: 35,
+            skin: warningSignSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("BUBBLES\n");
+         },
+       }),
+      }),
+
+
+      new Container({
+        top: 213, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: nemo,
+          }),
+
+          new Label({
+            top: 5, left: 100, right: 0, height: 58, style: fishNameStyle, string: "Nemo",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -200, height: 35,
+            skin: checkMarkSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("NEMO\n");
+         },
+       }),
+      }),
+
+      new Container({
+        top: 281, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: gill,
+          }),
+
+          new Label({
+            top: 5, left: 100, right: 0, height: 58, style: fishNameStyle, string: "Gill",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -200, height: 35,
+            skin: checkMarkSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("GILL\n");
+         },
+       }),
+      }),
+
+      new Container({
+        top: 281 + 68 + 1, left: 0, right: 0, contents: [
+          new Content({
+            top: 5, left: -240, right: 0, height: 58,
+            skin: dory,
+          }),
+
+          new Label({
+            top: 5, left: 100, right: 0, height: 58, style: fishNameStyle, string: "Dory",
+            skin: backgroundSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -200, height: 35,
+            skin: checkMarkSkin,
+          }),
+
+          new Content({
+            top: 15, left: 0, right: -280, height: 34,
+            skin: arrowSkin,
+          }),
+
+          new line({top: 68, height: 1, skin: darkGray}),
+
+        ],
+
+        active: true,
+        behavior: Behavior({
+         onTouchEnded: function(container) {
+          trace("DORY\n");
+         },
+       }),
+      }),
+
+
+    new Content({ 
+        width: 400, top: 520, left: -20,
+        skin: menu2, 
+    }),
+
+    Label($, {top: 552, left: 25, style: textStyleMenu, string: "Home" }),
+    Label($, {top: 552, left: 95, style: textStyleMenu, string: "My Fishes" }),
+    Label($, {top: 552, right: 95, style: textStyleMenu, string: "Schedules" }),
+    Label($, {top: 552, right: 25, style: textStyleMenu, string: "Food" }),
+    new Content({ 
+        width: 28, top: 520, right: 25,
+        skin: foodFish, 
+    }),
+    
+    new Content({ 
+        width: 26, top: 522, left: 25,
+        skin: aquarium, 
+    }),
+    
+    new Content({ 
+        width: 26, top: 520, left: 103,
+        skin: fish, 
+    }),
+      
+      new Content({ 
+        width: 26, top: 520, right: 105,
+        skin: alarm, 
+    }),
+
+      ],
+}));
+
+
+
 application.add(new fishDiagnosis());
+
 
 
 
