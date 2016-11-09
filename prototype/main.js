@@ -184,6 +184,8 @@ let fishDiagnosis = Container.template($ => ({
         active: true,
         behavior: Behavior({
          onTouchEnded: function(container) {
+          application.remove(container.container);
+          application.add(new fishList());
           trace("BACK\n");
          },
        }),
@@ -473,6 +475,8 @@ let fishList = Container.template($ => ({
         behavior: Behavior({
          onTouchEnded: function(container) {
           trace("BUBBLES\n");
+          application.remove(container.container);
+          application.add(new fishDiagnosis());
          },
        }),
       }),
@@ -615,7 +619,7 @@ let fishList = Container.template($ => ({
 
 
 
-application.add(new fishDiagnosis());
+application.add(new fishList());
 
 
 
