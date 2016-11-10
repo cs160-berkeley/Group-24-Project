@@ -374,7 +374,7 @@ let fishDiagnosis = Container.template($ => ({
       }),
 
       ],
-    }));
+}));
 
 application.add(new fishDiagnosis());
 
