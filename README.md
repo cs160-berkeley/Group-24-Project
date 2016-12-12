@@ -2,6 +2,8 @@
 
 ## Upstream Kinoma App
 
+![upstream.png](upstream.png)
+
 ### Group 24 Project: Gauthier Dieppedalle, Michelle Zhang, Tim Lim, Jessica He, Ahmed Husain
 
 Give your fish a step up with Upstream!
